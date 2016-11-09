@@ -1,0 +1,36 @@
+canvas {
+  display: block;
+  pointer-events: none;
+}
+
+#particles{
+  position: absolute;
+  pointer-events: none;
+  top: 0px;
+
+  /*border: 1px solid blue;*/
+}
+
+#yt {
+  /*display: none;*/
+}
+
+/*
+#intro{
+  width: 100%;
+  height: calc(100vh - 200px);
+
+
+  position: absolute;
+}*/
+
+#canvas {
+  display: none;
+
+}
+
+#dummy-font {
+  font-family: goth;
+  font-size: 50px;
+  color: white;
+}
