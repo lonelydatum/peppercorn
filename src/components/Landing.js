@@ -85,18 +85,19 @@ class Landing extends Component {
 	}
 
 	closeLanding() {
+		window.ga('send', 'event', 'stardust', 'landing-close');
 		this.props.landingClose()
 		this.setState({show: false})
 	}
 
 	openLanding() {
+		window.ga('send', 'event', 'stardust', 'landing-open');
 		this.props.landingOpen()
 		this.setState({show: true})
 	}
 
   	render() {
   		const showContent = this.state.show ? 'flex' : 'none'
-
   		const showButton = {
   			display:this.state.show ? 'none' : 'block'
   		}
