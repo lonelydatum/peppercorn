@@ -162,7 +162,7 @@ class Landing extends Component {
 	          	onClick={this.openLanding.bind(this)}
 	          	style={showButton}
 	          >
-	          	OPEN
+	          	<i className="fa fa-bars" aria-hidden="true"></i>
 	          </div>
 	        </div>
 
