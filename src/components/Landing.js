@@ -1,14 +1,68 @@
 import React, { Component } from 'react';
 import './Landing.css'
+import WordManager from './WordManager.js'
+import LandingData from './LandingData.js'
 
 var classNames = require('classnames');
+
 
 
 class Landing extends Component {
 
 	constructor() {
 		super()
-		this.state = {show: true}
+		this.state = {show: true, pepercornIndex:-1}
+
+		this.counter = {
+			finalSecond: LandingData.words[LandingData.words.length-1].seconds,
+			seconds: 0,
+			interval: null,
+			checkTicking() {
+				const result = this.seconds < this.finalSecond + 10
+				if(!result) {
+					this.stop()
+				}
+
+				return result
+			},
+			tick() {
+				this.interval = setInterval( () => {
+					// console.log(this.seconds);
+					this.seconds++
+					// this.seconds = (this.seconds > 30) ? 0 : this.seconds++
+				}, 1000 )
+			},
+
+			stop() {
+				clearInterval(this.interval)
+			}
+		}
+	}
+
+	componentDidMount() {
+		// console.log(document.getElementById('headline'));
+		this.wordManager = new WordManager(LandingData, 'headline')
+
+		this.counter.tick()
+		this.loop()
+
+		console.log(this);
+	}
+
+	loop() {
+
+		const word = this.wordManager.getWordByTime(this.counter.seconds)
+		if(word) {
+			console.log(word.index);
+			this.setState({pepercornIndex:word.index})
+		}
+
+		this.wordManager.render()
+
+		if(this.counter.checkTicking()) {
+			requestAnimationFrame(this.loop.bind(this))
+		}
+
 	}
 
 	closeLanding() {
@@ -28,23 +82,26 @@ class Landing extends Component {
   			display:this.state.show ? 'none' : 'block'
   		}
 
+  		console.log(this.state.pepercornIndex);
+
   		const twitter = {text: 'A music video M83-Wait with lyrics', url:'http://peppercorn.lonelydatum.com'}
   		twitter.all = `http://twitter.com/share?text=${twitter.text}&url=${twitter.url}&hashtags=M83&via=lonelydatum`
-  		console.log(twitter.all);
+  		const index = this.state.pepercornIndex
 	  	return(
 	  		<div id="landing">
 	          <div className="landing-content" style={{display:showContent}}>
 
 	              	<section>
-		              	<h1>
-		                	PEPPERCORN CAN ENHANCE YOUR WORDS
-		              	</h1>
-		              	<p>
-		              		Peppercorn is a tiny library that lets you write beautiful headlines that are composed of thousands of particles. These intelligent particles move syncronously which creates a hormonous pattern that makes the words come alive. If headlines are meant to grab attention then Peppercorn does just that while respecting the meaning of the words.
+	              		<div id="headline"></div>
 
+		              	<p>
+		              		<span className={classNames({'show':index>=0})}>Peppercorn is a tiny library</span>&nbsp;
+		              		<span className={classNames({'show':index>=1})}>that lets you write beautiful headlines</span>&nbsp;
+		              		<span className={classNames({'show':index>=2})}>composed of thousands of particles.</span>&nbsp;
+		              		<span className={classNames({'show':index>=3})}>There are dozens of ways to express your ideas.</span>
 		              	</p>
 		              	<p>
-		              		Peppercorn is not just for steaks, it can be used for banners, microsites and even music videos. Here is a music video from M83 - Wait where Peppercorn is used to create the lyrics.
+		              		Peppercorn is not just for steaks, it can be used for banners, microsites and even music videos. To demonstrate, I chose the a music video from M83 - "Wait", in order to animate the lyrics.
 		              	</p>
 		              	<p>
 

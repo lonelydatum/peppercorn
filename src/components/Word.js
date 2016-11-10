@@ -47,7 +47,6 @@ class Word {
 		const x = _.get(pos, 'x', ( r.w - w )  * .5)
 		const y = _.get(pos, 'y', ( r.h - (h) )  * .5)
 
-		console.log(pos);
 
 
 

@@ -6,6 +6,12 @@
   top: 0;
 }
 
+#headline {
+  /*border: 1px solid red;*/
+  font-size: 32px;
+  /*opacity: */
+}
+
 @keyframes buttonChangeColor {
     from {
       background-color: white;
@@ -71,10 +77,16 @@
 section h1 {
   font-size: 32px;
   margin-bottom: 22px;
+  display: none;
 }
 
-section h1 span {
+section span {
   opacity: .3;
+  transition: opacity 1s;
+}
+
+section span.show {
+  opacity: 1;
 }
 
 

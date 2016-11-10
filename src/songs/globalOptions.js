@@ -1,4 +1,5 @@
 const globalOptions = {
+	cssID: 'dummy-font',
 	type: 'JUST_ONE_LINE',
 	speed: [4,15],
 	origin: { x: 'centerX', y: 'centerY'},

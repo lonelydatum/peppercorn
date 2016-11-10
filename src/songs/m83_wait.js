@@ -12,6 +12,7 @@
 
 
 import globalOptions from './globalOptions.js'
+import CleanData from './CleanData.js'
 
 const data = {
 	globalOptions,
@@ -90,4 +91,9 @@ const data = {
 
 }
 
+data.words = CleanData(data.words)
+
+
+
 export default data
+

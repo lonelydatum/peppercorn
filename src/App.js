@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import _ from 'lodash'
 import './components/WordManager.js'
-import data from './components/songs/m83_wait.js'
+
 import Landing from './components/Landing.js'
-import globalOptions from './components/songs/globalOptions.js'
+import globalOptions from './songs/globalOptions.js'
+import data from './songs/m83_wait.js'
 import WebFont from 'webfontloader';
 import Youtube from './components/Youtube.js'
+
 
 
 
@@ -15,7 +17,6 @@ import './App.css'
 class App extends Component {
   constructor() {
     super()
-    data.words = this.convertList(data.words)
     const me = this
     WebFont.load({
       custom: {
@@ -25,19 +26,9 @@ class App extends Component {
         setTimeout(me.start.bind(me), 0)
       },
     });
-    // console.log(document.body.offsetWidth, document.body.offsetHeight);
-  }
-
-  componentDidMount() {
-
   }
 
   start() {
-
-    // globalOptions.size.w = document.body.offsetWidth
-    // globalOptions.size.h = document.body.offsetHeight
-    console.log(document.body.offsetWidth, document.body.offsetHeight);
-
     this.youtube = new Youtube(data.videoID, {w:globalOptions.size.w, h:window.innerHeight})
     this.youtube.promise.then( this.onYTLoaded.bind(this) )
   }
@@ -51,42 +42,17 @@ class App extends Component {
 
 
   loop() {
-    // console.log(this.player.getCurrentTime());
     this.wordManager.render()
     this.wordManager.getWordByTime(this.player.getCurrentTime())
     requestAnimationFrame(this.loop.bind(this));
   }
 
-  convert(str) {
-    const timeSplit = str.split(':')
-    let minutes = 0
-    let seconds = 0
-    if(timeSplit.length > 1) {
-      minutes = parseInt(timeSplit[0], 10)
-      seconds = parseInt(timeSplit[1], 10)
-    }else{
-      seconds = parseInt(timeSplit[0], 10)
-    }
-    return minutes*60 + seconds
-  }
-
-  convertItem(item) {
-    return { ...item, seconds: this.convert(item.playAt)}
-  }
-
-  convertList(list) {
-    list = list.map((item) => {
-      return this.convertItem(item)
-    })
-    return list
-  }
 
   open() {
     this.player.pauseVideo()
   }
 
   close() {
-    console.log(this);
     this.player.playVideo()
   }
 

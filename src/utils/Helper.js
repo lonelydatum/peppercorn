@@ -18,7 +18,7 @@ function getNonTransparentPixels(context, rect=getRectFromContext(context)) {
 		const g = data[i+1]
 		const b = data[i+2]
 		const a = data[i+3]
-		const rgba = {r, g, b, a:a*.4/255}
+		const rgba = {r, g, b, a:a/255}
 
 		const x = indexForPos%rect.w
 		y = (indexForPos%rect.w===0) ? y+1 : y
