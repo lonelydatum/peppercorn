@@ -126,7 +126,7 @@ class Landing extends Component {
 
 		              	</p>
 
-		              	<a href="#" id="cta" onClick={this.closeLanding.bind(this)}>SEE M83 DEMO</a>
+		              	<a href="" id="cta" onClick={this.closeLanding.bind(this)}>SEE M83 DEMO</a>
 
 
 		              	<div id="social">
