@@ -126,7 +126,7 @@ class Landing extends Component {
 
 		              	</p>
 
-		              	<a href="" id="cta" onClick={this.closeLanding.bind(this)}>SEE M83 DEMO</a>
+		              	<a id="cta" onClick={this.closeLanding.bind(this)}>SEE M83 DEMO</a>
 
 
 		              	<div id="social">
@@ -141,6 +141,15 @@ class Landing extends Component {
 					       <div id="shareBtn">
 					          <i className="fa fa-facebook" aria-hidden="true"></i>
 					        </div>
+
+
+					        <a className="github"
+					          href="https://github.com/lonelydatum/stardust"
+					          target="_blank"
+					        >
+					          <i className="fa fa-github" aria-hidden="true"></i>
+					        </a>
+
 					    </div>
 
 

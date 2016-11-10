@@ -99,6 +99,7 @@ section span.show {
   color: white;
   text-decoration: none;
   margin-top: 52px;
+  cursor: pointer;
 }
 
 #cta:hover {
@@ -122,6 +123,10 @@ section span.show {
 }
 
 .fa-twitter {
+  padding-right: 30px;
+}
+
+#shareBtn {
   padding-right: 30px;
 }
 
