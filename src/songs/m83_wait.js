@@ -18,7 +18,7 @@ const data = {
 	globalOptions,
 	videoID: 'lAwYodrBr2Q',
 	words:[
-		{text:'Music by M83 - WAIT', 		playAt: '6',
+		{text:'Music by M83 - WAIT', 		playAt: '4',
 			preset:'explode',
 			speed: [4,10],
 		},

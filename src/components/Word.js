@@ -81,11 +81,12 @@ class Word {
 			bounds.maxX = Math.max( bounds.maxX, staticItem.x )
 			bounds.minY = Math.min( bounds.minY, staticItem.y )
 			bounds.maxY = Math.max( bounds.maxY, staticItem.y )
+
 		} )
 
 		this.rect = new Rect(bounds.minX, bounds.minY, bounds.maxX - bounds.minX, bounds.maxY - bounds.minY)
 
-
+		const alpha = _.get( this.globalOptions, 'alpha', 1 )
 
 		nonTransparentPixels.forEach( (staticItem, index)=>{
 			let dynamicX = this.originX==='lock' ? staticItem.x : this.rect[this.originX]
@@ -96,7 +97,7 @@ class Word {
 				this.offsetX = this.offsetY = 0
 			}
 
-
+			staticItem.rgba.a *= alpha
 
 
 			const vectorDynamic = new Vector(dynamicX + this.offsetX, dynamicY + this.offsetY)

@@ -1,4 +1,5 @@
 const globalOptions = {
+	alpha: .4,
 	cssID: 'dummy-font',
 	type: 'JUST_ONE_LINE',
 	speed: [4,15],

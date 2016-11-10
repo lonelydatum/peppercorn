@@ -67,7 +67,7 @@ class WordManager {
 				if(gap > this.maxReadTime) {
 
 					if(this.wordCurr.trans === 'in' && !this.wordCurr.wordData.naturalDeath) {
-						console.log(this.wordCurr.wordData);
+						// console.log(this.wordCurr.wordData);
 						this.wordCurr.transOut()
 					}
 				}
