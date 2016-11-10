@@ -3,6 +3,7 @@ var Promise = require('promise');
 
 class YT {
   	constructor(videoID, size) {
+  		console.log(size);
 		this.player = null;
 		this.size = size
 
@@ -11,12 +12,7 @@ class YT {
 		this.resolve = null
 		this.promise = new Promise(this.promiseCallBack.bind(this));
 
-
-
-
-
 		const tag = document.createElement('script');
-
 		tag.src = "https://www.youtube.com/iframe_api";
 		const firstScriptTag = document.getElementsByTagName('script')[0];
 		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -31,7 +27,7 @@ class YT {
    ready() {
 		this.player = new window.YT.Player('yt', {
 	  		width: this.size.w,
-	  		height: this.size.h,
+	  		height: this.size.h-4,
 	  		videoId: this.videoID,
 	  		events: {
 				'onReady': this.onPlayerReady.bind(this),

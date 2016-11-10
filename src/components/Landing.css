@@ -1,17 +1,20 @@
 
 #landing {
-
   font-family: 'Playfair Display', serif;
-
   width: 100%;
-
   position: absolute;
   top: 0;
+}
 
-
-
-
-
+@keyframes buttonChangeColor {
+    from {
+      background-color: white;
+      color: black;
+    }
+    to {
+      background-color: rgba(0,0,0,.9);
+      color: white;
+    }
 }
 
 
@@ -24,29 +27,44 @@
   display: flex;
   top: 0;
   color: white;
-
 }
 
 .landing-content section {
   max-width: 900px;
   line-height: 32px;
   padding: 20px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 100px;
 }
 
+.landing-content p {
+  margin-bottom: 10px;
+}
+
 .landing-button {
+  transition: all 2s;
+  transition-delay: 3s;
   background-color: rgba(0,0,0,.9);
   color: white;
   top: 5px;
   right: 5px;
-  padding: 22px;
+  padding: 16px;
   cursor: pointer;
   position: absolute;
   border: 1px solid white;
+}
+
+.landing-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.butt-on {
+  animation-name: buttonChangeColor;
+  animation-duration: 1s;
+  animation-delay: 1s;
 }
 
 section h1 {
@@ -61,7 +79,6 @@ section h1 span {
 
 
 #cta {
-
   border: 1px solid white;
   padding: 11px;
   display: inline-block;

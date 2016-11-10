@@ -11,7 +11,7 @@ class WordManager {
 		this.data = data
 		this.rect = new Rect(0,0,this.data.globalOptions.size.w,this.data.globalOptions.size.h)
 		const app = document.getElementById(appID);
-		console.log(app);
+
 
 
 		const canvasTo = document.createElement('canvas');

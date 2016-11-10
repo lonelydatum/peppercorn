@@ -7,6 +7,8 @@ import globalOptions from './components/songs/globalOptions.js'
 import WebFont from 'webfontloader';
 import Youtube from './components/Youtube.js'
 
+
+
 import './App.css'
 
 
@@ -23,10 +25,18 @@ class App extends Component {
         setTimeout(me.start.bind(me), 0)
       },
     });
+    // console.log(document.body.offsetWidth, document.body.offsetHeight);
+  }
+
+  componentDidMount() {
 
   }
 
   start() {
+
+    // globalOptions.size.w = document.body.offsetWidth
+    // globalOptions.size.h = document.body.offsetHeight
+    console.log(document.body.offsetWidth, document.body.offsetHeight);
 
     this.youtube = new Youtube(data.videoID, {w:globalOptions.size.w, h:window.innerHeight})
     this.youtube.promise.then( this.onYTLoaded.bind(this) )
@@ -71,16 +81,24 @@ class App extends Component {
     return list
   }
 
+  open() {
+    this.player.pauseVideo()
+  }
+
+  close() {
+    console.log(this);
+    this.player.playVideo()
+  }
+
   render() {
     return (
       <div className="App" id="app">
-
         <div id="experience">
           <div id="yt" />
           <div id="particles" />
           <div id="dummy-font"></div>
         </div>
-        <Landing/>
+        <Landing landingOpen={this.open.bind(this)} landingClose={this.close.bind(this)} />
       </div>
     );
   }
