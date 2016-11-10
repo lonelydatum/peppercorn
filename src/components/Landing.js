@@ -37,17 +37,17 @@ class Landing extends Component {
 
 	              	<section>
 		              	<h1>
-		                	LET YOUR WORDS DANCE LIKE EVERYONE IS WATCHING
+		                	PEPPERCORN CAN ENHANCE YOUR WORDS
 		              	</h1>
 		              	<p>
-		              		Peppercorn is a library that lets you write beautiful headlines that are composed of thousands of particles. When these swarms of particles move syncronously it creates a hormonous pattern that makes the words come alive. Headlines are meant to grab attention and Peppercorn does just that while respecting the meaning of the words. The application can be used for banners, microsites and even music videos.
+		              		Peppercorn is a tiny library that lets you write beautiful headlines that are composed of thousands of particles. These intelligent particles move syncronously which creates a hormonous pattern that makes the words come alive. If headlines are meant to grab attention then Peppercorn does just that while respecting the meaning of the words.
 
 		              	</p>
 		              	<p>
-
+		              		Peppercorn is not just for steaks, it can be used for banners, microsites and even music videos. Here is a music video from M83 - Wait where Peppercorn is used to create the lyrics.
 		              	</p>
 		              	<p>
-		              		Here is a music video from M83 - Wait where Peppercorn is used to create the lyrics.
+
 		              	</p>
 
 		              	<a href="#" id="cta" onClick={this.closeLanding.bind(this)}>SEE M83 DEMO</a>
