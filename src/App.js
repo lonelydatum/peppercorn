@@ -19,7 +19,7 @@ import './App.css'
 class App extends Component {
   constructor() {
     super()
-
+    alert(JSON.stringify(screenOrientation()))
     this.state = {isPlaying:false, orientation:screenOrientation().direction}
 
     this.isIphone = (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))
@@ -54,8 +54,8 @@ class App extends Component {
   }
 
   onAudioLoaded() {
-    this.player = this.refs.AUDIO.player
-    this.createStarDust()
+    // this.player = this.refs.AUDIO.player
+    // this.createStarDust()
   }
 
   createStarDust() {
@@ -69,6 +69,17 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     if(prevState.isPlaying !== this.state.isPlaying) {
       if(this.state.isPlaying) {
+        if(!this.player) {
+            if(this.refs.AUDIO) {
+              this.player = this.refs.AUDIO.player
+            }else if(this.refs.YT) {
+              this.player = this.refs.YT.player
+            }
+
+        }
+        if(!this.wordManager) {
+          this.createStarDust()
+        }
         this.loop()
       }
     }
