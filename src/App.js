@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash'
+import screenOrientation from 'screen-orientation'
+
 import './components/WordManager.js'
 
 import Landing from './components/Landing.js'
@@ -18,7 +20,7 @@ class App extends Component {
   constructor() {
     super()
 
-    this.state = {isPlaying:false, orientation:screen.orientation.type}
+    this.state = {isPlaying:false, orientation:screenOrientation().direction}
 
     this.isIphone = (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))
 
@@ -39,7 +41,7 @@ class App extends Component {
 
   doOnOrientationChange()
   {
-    this.setState({orientation:screen.orientation.type})
+    this.setState({orientation:screenOrientation().direction})
   }
 
 
@@ -108,7 +110,9 @@ class App extends Component {
       )
 
 
-    const showOrientation = this.state.orientation === 'portrait-primary'
+    const showOrientation = this.state.orientation === 'portrait'
+
+    console.log(this.state.orientation);
 
 
     return (
