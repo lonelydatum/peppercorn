@@ -3,7 +3,7 @@ import CleanData from '../songs/CleanData.js'
 const globalOptions = {
 	maxReadTime: 4,
 
-	cssID: 'headline',
+	cssID: 'dummy-font-landing',
 	speed: [4,25],
 	origin: { x: 'centerX', y: 'centerY'},
 	offset:{x:0, y:0},
@@ -17,7 +17,7 @@ const data = {
 	globalOptions,
 
 	words:[
-		{text:`${'Stardust lets you write beautiful headlines'.toUpperCase()}`, 		playAt: '1',
+		{text:`${'Write beautiful headlines'.toUpperCase()}`, 		playAt: '1',
 			origin: {x:'left', y:'lock'}
 		},
 

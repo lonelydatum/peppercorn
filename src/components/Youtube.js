@@ -5,7 +5,7 @@ class YT extends Component {
 
   	constructor() {
   		super()
-		this.player = null;
+		  this.player = null;
   	}
 
   	componentDidUpdate(prevProps, prevState) {

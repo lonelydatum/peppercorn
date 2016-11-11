@@ -7,4 +7,16 @@
 	#dummy-font {
 	  font-size: 58px;
 	}
+
+	#dummy-font-landing {
+		font-size: 32px;
+	}
+
+	.landing-content section {
+		padding-top: 80px;
+	}
+
+	#cta {
+		margin-top: 50px;
+	}
 }

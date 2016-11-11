@@ -51,6 +51,15 @@ class Landing extends Component {
 		this.counter.tick()
 		this.loop()
 
+		document.getElementById('shareBtn').onclick = function() {
+		  window.FB.ui({
+		    app_id: '514223558786546',
+		    method: 'share',
+		    display: 'popup',
+		    href: 'http://stardust.lonelydatum.com',
+		  }, function(response){});
+		}
+
 		// console.log(this);
 	}
 
@@ -113,12 +122,11 @@ class Landing extends Component {
 
 	              	<section>
 	              		<div id="headline"></div>
+	              		<div id="dummy-font-landing"></div>
 
 		              	<p>
-		              		<span className={classNames({'show':index>=0})}>Stardust lets you write beautiful headlines</span>&nbsp;
+		              		<span className={classNames({'show':index>=0})}>Write beautiful headlines</span>&nbsp;
 		              		<span className={classNames({'show':index>=1})}>composed of thousands of particles.</span>&nbsp;
-
-
 		              	</p>
 		              	<p>
 		              		Here is a demo using a music video from M83 - "Wait".

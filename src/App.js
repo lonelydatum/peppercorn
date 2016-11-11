@@ -7,6 +7,9 @@ import globalOptions from './songs/globalOptions.js'
 import data from './songs/m83_wait.js'
 // import WebFont from 'webfontloader';
 import Youtube from './components/Youtube.js'
+import Music from './components/Music.js'
+import Orientation from './components/Orientation.js'
+
 
 import './App.css'
 
@@ -15,7 +18,9 @@ class App extends Component {
   constructor() {
     super()
 
-    this.state = {isPlaying:false}
+    this.state = {isPlaying:false, orientation:screen.orientation.type}
+
+    this.isIphone = (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))
 
     // const me = this
     // WebFont.load({
@@ -26,13 +31,36 @@ class App extends Component {
     //     setTimeout(me.start.bind(me), 0)
     //   },
     // });
+
+    window.addEventListener('orientationchange', this.doOnOrientationChange.bind(this));
+
+
   }
+
+  doOnOrientationChange()
+  {
+    this.setState({orientation:screen.orientation.type})
+  }
+
 
 
 
   onYTLoaded() {
     this.player = this.refs.YT.player
+    this.createStarDust()
+  }
+
+  onAudioLoaded() {
+    this.player = this.refs.AUDIO.player
+    this.createStarDust()
+  }
+
+  createStarDust() {
     this.wordManager = new window.Peppercorn(data, 'particles')
+  }
+
+  componentDidMount() {
+    // this.doOnOrientationChange()
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -45,8 +73,10 @@ class App extends Component {
 
   loop() {
     this.wordManager.render()
+
     this.wordManager.getWordByTime(this.player.getCurrentTime())
     if(this.state.isPlaying) {
+
       requestAnimationFrame(this.loop.bind(this));
     }
   }
@@ -61,20 +91,36 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App" id="app">
-        <div id="experience">
-          <Youtube
+    const youtube = (<Youtube
             ref={'YT'}
             isPlaying={this.state.isPlaying}
             videoID={data.videoID}
             size={{w:globalOptions.size.w, h:window.innerHeight}}
             onYTLoaded={this.onYTLoaded.bind(this)}
-          />
+          />)
+
+    const music = (
+      <Music
+        ref={'AUDIO'}
+        isPlaying={this.state.isPlaying}
+        onAudioLoaded={this.onAudioLoaded.bind(this)}
+      />
+      )
+
+
+    const showOrientation = this.state.orientation === 'portrait-primary'
+
+
+    return (
+      <div className="App" id="app">
+        <div id="experience">
+          {this.isIphone ? music : youtube}
           <div id="particles" />
           <div id="dummy-font"></div>
         </div>
+
         <Landing landingOpen={this.pauseVideo.bind(this)} landingClose={this.playVideo.bind(this)} />
+        {showOrientation ? <Orientation/> : null}
       </div>
     );
   }

@@ -6,10 +6,8 @@
   top: 0;
 }
 
-#headline {
-  /*border: 1px solid red;*/
-  font-size: 32px;
-  /*opacity: */
+#dummy-font-landing {
+  font-size: 27px;
 }
 
 @keyframes buttonChangeColor {
@@ -37,17 +35,18 @@
 }
 
 .landing-content section {
-  max-width: 900px;
+  max-width: 100%;
   line-height: 32px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 10px;
+
 }
 
 .landing-content p {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 18px;
 }
 
@@ -98,7 +97,7 @@ section span.show {
   display: inline-block;
   color: white;
   text-decoration: none;
-  margin-top: 52px;
+  margin-top: 10px;
   cursor: pointer;
 }
 
