@@ -7,14 +7,21 @@ const globalOptions = {
 	speed: [4,25],
 	origin: { x: 'centerX', y: 'centerY'},
 	offset:{x:0, y:0},
-	size: { w: document.body.offsetWidth, h: 100 },
+
 }
 
 
 
 
 const data = {
+
+
+
 	globalOptions,
+
+	setSize(){
+		this.globalOptions.size = { w: document.body.offsetWidth, h: 100 }
+	},
 
 	words:[
 		{text:`${'Write beautiful headlines'.toUpperCase()}`, 		playAt: '1',
@@ -40,5 +47,7 @@ const data = {
 
 
 data.words = CleanData(data.words)
+data.setSize()
+
 
 export default data

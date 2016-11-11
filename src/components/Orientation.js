@@ -7,7 +7,7 @@ class Orientation extends Component {
 		return (
 			<div id="orientation">
 
-				<img src="orientation.jpg" />
+				<img src="orientation.jpg" alt="fake-video" />
 			</div>
 		)
 	}

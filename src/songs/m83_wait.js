@@ -16,6 +16,12 @@ import CleanData from './CleanData.js'
 
 const data = {
 	globalOptions,
+
+	setSize(){
+		this.globalOptions.size = { w: document.body.offsetWidth, h: window.innerHeight }
+	},
+
+
 	videoID: 'lAwYodrBr2Q',
 	words:[
 		// {text:'STARDUST', 		playAt: '7',

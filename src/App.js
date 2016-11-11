@@ -41,6 +41,7 @@ class App extends Component {
 
   doOnOrientationChange()
   {
+
     this.setState({orientation:screenOrientation().direction})
   }
 
@@ -112,11 +113,15 @@ class App extends Component {
 
     const showOrientation = this.state.orientation === 'portrait'
 
-    console.log(this.state.orientation);
-
-
-    return (
+    const WITH_ORIENTATION = (
       <div className="App" id="app">
+        <Orientation/>
+      </div>
+    )
+
+    const NORMAL = (
+      <div className="App" id="app">
+
         <div id="experience">
           {this.isIphone ? music : youtube}
           <div id="particles" />
@@ -124,8 +129,15 @@ class App extends Component {
         </div>
 
         <Landing landingOpen={this.pauseVideo.bind(this)} landingClose={this.playVideo.bind(this)} />
-        {showOrientation ? <Orientation/> : null}
       </div>
+    )
+
+
+    return (
+
+       showOrientation ? WITH_ORIENTATION : NORMAL
+
+
     );
   }
 }

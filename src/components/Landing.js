@@ -46,6 +46,7 @@ class Landing extends Component {
 
 	componentDidMount() {
 		// console.log(document.getElementById('headline'));
+
 		this.wordManager = new WordManager(LandingData, 'headline')
 
 		this.counter.tick()

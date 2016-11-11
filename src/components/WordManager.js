@@ -6,6 +6,8 @@ import Rect from '../utils/Rect.js'
 class WordManager {
 	constructor(data, canvasHolders) {
 		this.data = data
+		this.data.setSize()
+		console.log(document.body.offsetWidth);
 		this.rect = new Rect(0,0,this.data.globalOptions.size.w,this.data.globalOptions.size.h)
 		this.maxReadTime = _.get(this.data, 'globalOptions.maxReadTime', 6)
 		const app = document.getElementById(canvasHolders);
