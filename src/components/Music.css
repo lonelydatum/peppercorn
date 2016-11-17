@@ -7,8 +7,12 @@
 	width: 100%;
 	min-height: 100vh;
 
-	background:  url(m83.gif) no-repeat center center fixed;
+
+
   	background-size: cover;
+  	background-repeat: no-repeat;
+  	background-position: center center;
+  	background-attachment: fixed;
 
 }
 

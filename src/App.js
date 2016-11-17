@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash'
-import screenOrientation from 'screen-orientation'
+// import screenOrientation from 'screen-orientation'
 
 import './components/WordManager.js'
 
@@ -21,23 +21,9 @@ class App extends Component {
     super()
 
 
-    this.state = {isPlaying:false, orientation: this.getOrinet()}
+    this.state = {isPlaying:false, orientation: this.getOrinet(), word:null}
 
     this.isIphone = (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))
-
-    // const me = this
-    // WebFont.load({
-    //   custom: {
-    //     families: ['goth']
-    //   },
-    //   active(){
-    //     setTimeout(me.start.bind(me), 0)
-    //   },
-    // });
-
-    console.log(JSON.stringify(screen))
-
-    // window.addEventListener('orientationchange', this.doOnOrientationChange.bind(this));
 
 
     window.mobilecheck = function() {
@@ -121,7 +107,10 @@ class App extends Component {
   loop() {
     this.wordManager.render()
 
-    this.wordManager.getWordByTime(this.player.getCurrentTime())
+    const word = this.wordManager.getWordByTime(this.player.getCurrentTime())
+    if(word){
+      this.setState({word: word})
+    }
     if(this.state.isPlaying) {
 
       requestAnimationFrame(this.loop.bind(this));
@@ -148,6 +137,7 @@ class App extends Component {
 
     const music = (
       <Music
+        word={this.state.word}
         ref={'AUDIO'}
         isPlaying={this.state.isPlaying}
         onAudioLoaded={this.onAudioLoaded.bind(this)}
