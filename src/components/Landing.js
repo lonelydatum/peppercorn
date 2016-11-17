@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Landing.css'
 import WordManager from './WordManager.js'
 import LandingData from './LandingData.js'
-
+import {Tracking} from '../utils/Helper.js'
 var classNames = require('classnames');
 
 
@@ -94,14 +94,27 @@ class Landing extends Component {
 
 	}
 
+	socialGit() {
+		Tracking('social-git')
+	}
+
+	socialTwitter() {
+		Tracking('social-twitter')
+
+	}
+	socialFB() {
+		Tracking('social-fb')
+	}
+
 	closeLanding() {
-		window.ga('send', 'event', 'stardust', 'landing-close');
+		Tracking('landing-close')
+
 		this.props.landingClose()
 		this.setState({show: false})
 	}
 
 	openLanding() {
-		window.ga('send', 'event', 'stardust', 'landing-open');
+		Tracking('landing-open')
 		this.props.landingOpen()
 		this.setState({show: true})
 	}
@@ -141,6 +154,7 @@ class Landing extends Component {
 
 		              	<div id="social">
 					        <a className="twitter-share-button"
+					        	onClick={this.socialTwitter}
 					          href={twitter.all}
 					          target="_blank"
 					        >
@@ -148,12 +162,13 @@ class Landing extends Component {
 					        </a>
 
 
-					       <div id="shareBtn">
+					       <div id="shareBtn" onClick={this.socialFB}>
 					          <i className="fa fa-facebook" aria-hidden="true"></i>
 					        </div>
 
 
 					        <a className="github"
+					        	onClick={this.socialGit}
 					          href="https://github.com/lonelydatum/stardust"
 					          target="_blank"
 					        >

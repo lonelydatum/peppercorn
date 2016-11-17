@@ -69,6 +69,11 @@ var determineFontWidth = function(fontStyle, text) {
   return result;
 };
 
+const Tracking = function(type) {
+	console.log(type);
+	window.ga('send', 'event', 'stardust', type);
+}
+
 // var canvas = document.getElementById('canvas');
 // var context = canvas.getContext("2d");
 // var canvasFont = " ... ";
@@ -110,4 +115,4 @@ var determineFontWidth = function(fontStyle, text) {
 
 
 
-export {range, getRectFromContext, getNonTransparentPixels, determineFontHeight, determineFontWidth}
+export {range, getRectFromContext, getNonTransparentPixels, determineFontHeight, determineFontWidth, Tracking}
