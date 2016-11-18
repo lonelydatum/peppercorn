@@ -11,7 +11,7 @@ import data from './songs/m83_wait.js'
 import Youtube from './components/Youtube.js'
 import Music from './components/Music.js'
 import Orientation from './components/Orientation.js'
-
+import isMobile from 'ismobilejs'
 
 import './App.css'
 
@@ -21,7 +21,7 @@ class App extends Component {
     super()
 
 
-    this.state = {isPlaying:false, orientation: this.getOrinet(), word:null}
+    this.state = {isPlaying:false, orientation: this.getOrinet(), word:null, width:window.innerWidth, height:window.innerHeight}
 
     this.isIphone = (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))
 
@@ -40,27 +40,16 @@ class App extends Component {
 
 
 
+
+
   }
 
   getOrinet() {
-    // let orient = _.get(screen, 'orientation.type', screenOrientation().direction)
-    // if(orient==='landscape-primary') {
-    //   orient = 'landscape'
-    // }else if(orient==='portrait-primary'){
-    //   orient = 'portrait'
-    // }
-    // alert(JSON.stringify(screen));
-
     let orient = (window.innerHeight > window.innerWidth) ? 'portrait' : 'landscape'
-    // alert(window.innerWidth +" "+window.innerHeight)
-
     return orient
   }
 
-  doOnOrientationChange(e)
-  {
-    // alert(this);
-
+  doOnOrientationChange(e){
     this.setState({orientation:this.getOrinet()})
   }
 
@@ -145,7 +134,8 @@ class App extends Component {
       )
 
 
-    const showOrientation = this.state.orientation === 'portrait'
+    const showOrientation = this.state.orientation === 'portrait' && isMobile.any
+
 
     const WITH_ORIENTATION = (
       <div className="App" id="app">

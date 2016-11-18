@@ -49,6 +49,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "ismobilejs": "^0.4.0",
     "lodash": "^4.16.6",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
