@@ -1,5 +1,6 @@
 {
   "name": "peppercorn",
+  "homepage": "https://lonelydatum.github.io/stardust-demo",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
